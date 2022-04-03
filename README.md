@@ -1,3 +1,4 @@
+## An online platform to buy and sell cars for the students of the university of memphis
 # Before running app
 Seed database after migration. So, run `rails db:migrate:reset db:seed` 
 - Authority username/email: **report@memphis.edu** and password: **authority** 
