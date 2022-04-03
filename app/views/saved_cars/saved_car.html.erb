@@ -1,0 +1,63 @@
+
+
+
+<div class="row" style="margin-top:20px">
+    <div class="col-md-12">
+        <h1 class="font-weight-bold"> Saved Cars</h1>
+    </div>
+    <div class="col-md-12", style="margin-top:20px">
+        <div class="row">
+            <% if local_assigns.has_key? :find_car and !find_car.empty?%>
+                <% find_car.each do |car|%>
+                <div class="col-md-4">                      
+                    <div class="col-md-9">
+                        <%= image_tag(car.image, class:'detail_car_size') %>
+                        <div style="margin-top:10px" class="remove_saved_car_dots" >
+                            <li><%= car.make.camelcase%> <%= car.model.camelcase%> <%= car.year%></li>
+                            <li>Mileage: <%= car.mileage%> miles </li>
+                            <li>Price: $<%= car.price%></li>
+                            <% if local_assigns.has_key? :find_seller and !find_seller.empty?%>
+                                <% i=0 %>
+                                 <% find_seller.each do |seller|%>
+
+                                    <% if seller.id == car.user_id%>
+                                        
+                                         <li>Seller: <strong> <%= seller.name %></strong></li>
+                                         <li><%= image_tag(seller.photo, class:'img-circle', height: 50, width: 50) %>
+                                            <span>
+                                                <%for j in 0...find_seller_rating[i] %>
+                                                    <i class="fa fa-star text-danger" aria-hidden="true"></i>
+                                                <% end %>
+                                                <%for j in 0...(5-find_seller_rating[i]) %>
+                                                    <i class="fa fa-star-o text-danger" aria-hidden="true"></i>
+                                                <%end%>
+                                            </span>
+                                         </li>
+
+                                         
+                                        <%end%>
+                                        <% i = i+1 %>
+                                 <% end %>
+
+                                <% end %>
+                        </div>
+                    </div>
+                    
+                    <div class="row", style="margin-top:20px">
+                        <div class="col-md-7 justify-content-center", style="margin-bottom:20px">
+                            <%= link_to 'View Details', car_details_path(car), class:"btn btn-primary btn-block" %>
+                        </div>
+                    </div>
+                </div>
+                <% end %>
+            <% else %>
+                <div class="row">
+                    <div class="col-md-12 content-justify-center">
+                        <span class="text-success"> You have no cars </span>
+                    </div>
+                </div>
+            <% end %>
+
+        </div>
+    </div>
+</div>

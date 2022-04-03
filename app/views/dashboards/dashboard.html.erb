@@ -1,0 +1,129 @@
+<div class="row" style="margin-top: 20px">
+    <div class="col-sm-1 text-rating">
+        <label class="text-left">Your Rating</label>
+    </div>
+    <div class="col-sm-1">
+        <div class="row text-left text-primary">
+            <%for i in 0...user_rating %>
+                <i class="fa fa-star" aria-hidden="true"></i>
+            <% end %>
+            <%for i in 0...(5-user_rating) %>
+            <i class="fa fa-star-o" aria-hidden="true"></i>
+            <%end%>
+        </div>
+        <div class="row">
+            <p class="text-sm font-weight-light"><%=user_rating.to_f %>/5.0</p>
+        </div>
+    </div>
+</div>
+
+
+<div class="row" style="margin-top:20px">
+    <div class="col-md-12">
+        <span class="font-weight-bold"> Your Cars</span>
+    </div>
+    <div class="col-md-12">
+        <div class="row">
+            <% if local_assigns.has_key? :your_cars and !your_cars.empty?%>
+                <% your_cars.each do |car|%>
+                <div class="col-md-3">
+                    <div clas="row">
+                        <div class="col-md-7">
+                            <label class="text-center"><%= car.make.upcase%> <%= car.model.upcase%></label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-7">
+                            <%= image_tag(car.image,class:'car_size') %>
+                        </div>
+                        <div class="col-md-4">
+                            <p>Year:<%= car.year%></p>
+                            <p>Mileage:<%= car.mileage%> </p>
+                            <p>Price:$<%= car.price%></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-7 justify-content-center">
+                            <%= link_to 'View Details', car_details_path(car), class:'btn  btn-viewDetails' %>
+                        </div>
+                    </div>
+                </div>
+                <% end %>
+            <% else %>
+                <div class="row">
+                    <div class="col-md-12 content-justify-center">
+                        <span class="text-success"> You have no car </span>
+                    </div>
+                </div>
+            <% end %>
+
+        </div>
+    </div>
+</div>
+
+
+
+<div class="row" style="margin-top:20px">
+    <div class="col-md-6">
+        <div class="row">
+            <span class="font-weight-bold"> Most Recent Cars</span>
+        </div>
+        <div class="row">
+            <% if local_assigns.has_key? :most_recents and !most_recents.empty?%>
+            <% most_recents.each do |r_car|%>
+                <div class="col-md-6">
+                    <div clas="row">
+                        <div class="col-md-7">
+                            <label class="text-center"><%=r_car.make.upcase%> <%=r_car.model.upcase%></label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-7">
+                            <%= image_tag(r_car.image,class:'car_size') %>
+                        </div>
+                        <div class="col-md-4">
+                            <p>Year:<%=r_car.year%></p>
+                            <p>Mileage:<%=r_car.mileage%></p>
+                            <p>Price:$<%=r_car.price%></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 justify-content-center">
+                            <%= link_to 'View Details', car_details_path(r_car), class:'btn  btn-viewDetails' %>
+                        </div>
+                    </div>
+                </div>
+                <%end%>
+            <%else%>
+                <div class="col-md-6">
+                    No Recent Cars
+                </div>
+            <%end%>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="row">
+            
+        </div>
+        <div class="row">
+            <div class="col-md-6"> 
+                <div class="row justify-center circle-title"><span> Car Sold</span></div>
+                <div class="col-md-4 circle-block">
+                    <div class="circle-sold">
+                        <p><%= sold_cars %></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 float-md-right"> 
+                <div class="row justify-right circle-title"><span> Car Bought</span></div>
+                <div class="col-md-4 circle-block">
+                    <div class="circle-bought">
+                        <p><%= bought_cars %></p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

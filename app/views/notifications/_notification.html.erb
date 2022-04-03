@@ -1,0 +1,25 @@
+<li>
+    <% 
+        if !notification.nil?
+            sender = User.find(notification.notified_by_id)
+            convo_id = notification.conversation
+            message_time = Message.find(notification.id).created_at
+            message_body = Message.find(notification.id).body[0..100] + "..."
+        end
+    %>
+    
+    <div class="row">
+    <% if !notification.nil? %>
+        <div class="col-lg-3 col-sm-3 col-3 text-center">
+        <%= image_tag sender.photo, :class=> "rounded-circle", :size=>"40x40"%>
+        </div>    
+        <div class="col-lg-8 col-sm-8 col-8">
+            <strong class="text-info"><%= link_to sender.name, notification_path(convo_id) %></strong>
+        <div>
+            <%= message_body %>
+        </div>
+            <small class="text-warning"></small>
+        </div>
+    <% end %>  
+    </div> 
+</li>

@@ -1,0 +1,163 @@
+  
+<div class="row" style="margin-top: 20px">
+    <div class="col-md-6 justify-content-center align-items-around">
+        <!-- Search form -->
+        <%= form_with url: search_path, local: true, method: :get do %>
+            <div class="input-group mb-4 border rounded-pill p-2">
+                <div class="input-group-prepend border-0">
+                    <%= button_tag type: 'submit', class: "btn btn-link text-info", id: "button-addon4" do %>
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                    <% end %>
+                </div>
+
+                <%= search_field_tag :search, params[:search], placeholder:"Search cars by make........", class: "form-control bg-none border-0"%>
+            </div>
+        <%end%>
+
+        <div class="row">
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-6">
+                <% if local_assigns.has_key? :search_msg %>
+                    <p class="alert alert-warning"><%= search_msg %></p>
+                <% end %>
+            </div>
+            <div class="col-md-2">
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 border">
+        <span class="advanceSearch"> Advance Search</span>
+        <%= form_with url: advance_search_path, local: true, method: :get do %>
+            <div class="form-group">
+                <%
+                i = 0
+                makes_array = Array.new()
+                if !makes.empty?
+                    makes.each do |make|
+                        makes_array.insert(i, make.upcase)
+                        i=i+1
+                    end
+                end
+                %>
+                <%= select_tag "make", options_for_select(makes_array), prompt: 'Make...' , class:"form-control"%>
+                
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <%
+                    i = 0
+                    makes_array = Array.new()
+                    if !models.empty?
+                        models.each do |model|
+                            makes_array.insert(i, model.upcase)
+                            i=i+1
+                        end
+                    end
+                    %>
+                    <%= select_tag "model", options_for_select(makes_array), prompt: 'Model...' , class:"form-control"%>
+
+                </div>
+                <div class="form-group col-md-6">
+                    <%
+                    i = 0
+                    makes_array = Array.new()
+                    if !mileages.empty?
+                        mileages.each do |mileage|
+                            makes_array.insert(i, mileage)
+                            i=i+1
+                        end
+                    end
+                    %>
+                    <%= select_tag "mileage", options_for_select(makes_array), prompt: 'Mileage...' , class:"form-control"%>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <%
+                    i = 0
+                    makes_array = Array.new()
+                    if !years.empty?
+                        years.each do |year|
+                            makes_array.insert(i, year)
+                            i=i+1
+                        end
+                    end
+                    %>
+                    <%= select_tag "year", options_for_select(makes_array), prompt: 'Year...' , class:"form-control"%>
+                </div>
+                <div class="form-group col-md-6">
+                    <%
+                    i = 0
+                    makes_array = Array.new()
+                    if !prices.empty?
+                        prices.each do |price|
+                            makes_array.insert(i, price)
+                            i=i+1
+                        end
+                    end
+                    %>
+                    <%= select_tag "price", options_for_select(makes_array), prompt: 'Price...' , class:"form-control"%>
+                </div>
+            </div>
+  
+            <div class="form-row">
+                <div class="form-group col-md-4"></div>
+                <div class="form-group col-md-4">
+                    <%= submit_tag "Search", class:"form-control"%>
+                </div>
+                <div class="form-group col-md-4"></div>
+            </div>
+        <%end%>
+    </div>
+</div>
+<div class="row" style="margin-top:20px">
+    <div class="col-md-12">
+        <% if is_search%>
+        <span class="font-weight-bold"> Search Results</span>
+        <%else%>
+            <span class="font-weight-bold"> Featured Cars</span>
+        <%end%>
+    </div>
+    <% if local_assigns.has_key? :search_result and !search_result.empty?%>
+    <div class="col-md-12">
+        <div class="row">
+            <% search_result.each do |car|%>
+            <div class="col-md-3">
+                <div clas="row">
+                    <div class="col-md-7">
+                        <label class="text-center"> <%= car.make.upcase %> <%= car.model.upcase %></label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-7">
+                        <%= image_tag(car.image,class:'car_size') %>
+                    </div>
+                    <div class="col-md-4">
+                        <p>Year:<%= car.year %></p>
+                        <p>Mileage:<%= car.mileage %></p>
+                        <p>Price:$<%= car.price %></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-7 justify-content-center">
+                        <%= link_to 'View Details', car_details_path(car), class:'btn  btn-viewDetails' %>
+                    </div>
+                </div>
+            </div>
+            <%end%>
+
+        </div>
+    </div>
+    <% else %>
+
+    <div class="col-md-12">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <p class="text-danger"> No Car found!</p>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+
+    <%end%>
+</div>

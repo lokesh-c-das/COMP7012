@@ -1,0 +1,51 @@
+# == Schema Information
+#
+# Table name: cars
+#
+#  id          :bigint           not null, primary key
+#  bought      :integer          default(0)
+#  description :text
+#  make        :string
+#  mileage     :integer
+#  model       :string
+#  photo       :string
+#  price       :integer
+#  sold        :integer          default(0)
+#  year        :integer
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  user_id     :bigint
+#
+# Indexes
+#
+#  index_cars_on_user_id  (user_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (user_id => users.id)
+#
+
+one:
+  year: 2000
+  model: Honda
+  make: Accord
+  mileage: 12000
+  photo: 1.jpg
+  price: 6000
+  description: This is in good condition.
+  user: one
+  sold: 0
+  bought: 0
+
+
+two:
+  year: 2017
+  model: Toyota
+  make: Camry
+  mileage: 7000
+  photo: 2.jpg
+  price: 10000
+  description: Almost new. 
+  user: two
+  sold: 0
+  bought: 0

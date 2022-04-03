@@ -1,0 +1,137 @@
+// Place all the styles related to the Homes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.badge { 
+    position: relative; 
+    top: -15px; 
+    left: -15px; 
+    background-color: red;
+    color:white;
+    width:12px;
+    height: 12px;
+    padding:0 !important;
+}
+.fa-envelope.color{
+    background-color:blue;
+}
+
+.advanceSearch{
+    position: relative;
+    top:-14px;
+    background-color: white;
+}
+
+
+/** for form search **/
+
+.has-search .form-control {
+    padding-left: 2.375rem;
+}
+
+.has-search .form-control-feedback {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    width: 2.375rem;
+    height: 2.375rem;
+    line-height: 2.375rem;
+    text-align: center;
+    pointer-events: none;
+    color: #aaa;
+}
+
+/*** Featured cars section ***/
+
+.btn-viewDetails{
+    width:150px;
+    margin-top:10px;
+    background-color: wheat;
+    color: blue !important;
+    border: 1px solid black !important;
+    border-radius: 5px !important;
+}
+
+.text-box {
+    width: 400px;
+    margin: 0 auto;
+    overflow: auto;
+    border: 1px solid black;
+    padding: 2px;
+    text-align: justify;
+    background: transparent;
+    }
+
+    body{
+        margin-top: 50px;
+        background-color: #f1f1f1;
+      } 
+      .nav-pills .nav-link.active, .nav-pills .show > .nav-link{
+        background-color: #17A2B8;
+      }
+.dropdown-menu{
+    top: 60px;
+    right: 0px;
+    left: unset;
+    width: 460px;
+    box-shadow: 0px 5px 7px -1px #c1c1c1;
+    padding-bottom: 0px;
+    padding: 0px;
+    }
+
+    
+.dropdown-menu:before{
+content: "";
+position: absolute;
+top: -20px;
+right: 12px;
+border:10px solid #343A40;
+border-color: transparent transparent #343A40 transparent;
+}
+.head{
+padding:5px 15px;
+border-radius: 3px 3px 0px 0px;
+}
+.footer{
+padding:5px 15px;
+border-radius: 0px 0px 3px 3px; 
+}
+.notification-box{
+padding: 10px 0px; 
+}
+.bg-gray{
+background-color: #eee;
+}
+@media (max-width: 640px) {
+.dropdown-menu{
+    top: 50px;
+    left: -16px;  
+    width: 290px;
+} 
+.nav{
+    display: block;
+}
+.nav .nav-item,.nav .nav-item a{
+    padding-left: 0px;
+}
+.message{
+    font-size: 13px;
+}
+}
+.display-message{
+    height: 300px;
+    overflow-y: scroll;
+    scroll-margin-top: 200px;
+}
+
+
+/*****
+*** For Profile picture
+***/
+
+.profile_picture{
+    height: 30px;
+    width: 30px;
+    border-radius: 100%;
+    border: solid 1px #17A2B8;
+}

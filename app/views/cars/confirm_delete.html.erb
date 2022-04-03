@@ -1,0 +1,65 @@
+<div class="row">
+
+<div class='col-md-3'></div>
+<div class='col-md-6'>
+    <form>
+        <div class="row title">
+            <h1>Delete Car</h1>
+        </div>
+        <div class="form-row">
+            <div class="col-md-8">
+                <div class="form-group header">
+                    <h4><%=car.make.camelize%> <%= car.model.camelize%></h4>
+                </div>
+
+                <div class="form-group">
+                    <Strong>Year: </Strong><%= car.year%>
+                </div>
+                
+                <div class="form-group">
+                    <Strong>Mileage: </Strong><%= car.mileage%> 
+                </div>
+                
+                <div class="form-group">
+                    <Strong>Price: </Strong><%= car.price%> 
+                </div>
+                <div class="form-group">
+                    <Strong>Location: </Strong> Memphis, TN 
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <%= image_tag(car.image, class:'detail_car_size')%>
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <% if car.description.length > 0 %>
+                <div class="form-group">
+                    <Strong>Description: </Strong><%= car.description%> 
+                </div> 
+            <% end %>
+        </div>
+        <div class="form-row">
+            <div class ="form-group">
+                <h3 class="text-primary"><strong>Are you sure you want to delete?</strong></h4>
+            </div>
+            <div class ="form-group">
+                <h5 class="text-danger"><strong>*Once deleted, you will not be able to recover this</strong></h4><br>
+            </div>
+        </div>
+        <div class='form-group row'>
+                <div class='col-md-4'>
+                    <%= link_to 'Yes', '', class:'btn btn-primary btn-decision btn-block', method: :delete %>
+                </div>
+                <div class='col-md-4'>
+                    <%= link_to 'No', car_details_path, class:'btn btn-primary btn-decision btn-block' %>
+                </div>
+                <div class='col-md-4'>
+                    <%= link_to 'Update', update_car_path, class:'btn btn-primary btn-decision btn-block' %>
+                </div>
+        </div>  
+    </form>
+</div>
+<div class="col-md-3"></div>
+</div>

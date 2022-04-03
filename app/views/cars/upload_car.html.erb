@@ -1,0 +1,70 @@
+<script>
+var upload_file = function(event){
+    var file = document.getElementById("upload_image");
+    file.click();
+
+};
+var loadFile = function(event) {
+	var image = document.getElementById('output');
+	image.src = URL.createObjectURL(event.target.files[0]);
+};
+</script>
+
+<div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+        <h1>Let's add some details...</h1>
+        <%= form_with model: car_data, url: upload_car_form_path, multipart: true, method: :post, local: true, scope: :car do |f| %>  
+            <div class="form-row">
+                
+                <div class="col-md-8">
+                
+                    <div class="form-group">
+                        <%= f.label "make" %>
+                        <%= f.text_field "make", :class => 'form-control', required: true %>
+                    </div>
+
+                    <div class="form-group">
+                        <%= f.label "model" %>
+                        <%= f.text_field "model", :class => 'form-control', required: true  %>
+                    </div>
+
+                    <div class="form-group">
+                        <%= f.label "year" %>
+                        <%= f.number_field "year", :class => 'form-control', required: true  %>
+                    </div>
+                    
+                    <div class="form-group">
+                        <%= f.label "mileage" %>
+                        <%= f.number_field "mileage", :class => 'form-control', required: true %>
+                    </div>
+                    
+                    <div class="form-group">
+                        <%= f.label "price" %>
+                        <%= f.number_field "price", :class => 'form-control', required: true %>
+                    </div>
+                    <div class="form-group">
+                        <%= f.label "description" %><br />
+                        <%= f.text_area "description", size: "5x2" , :class => 'form-control' %>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-6">
+                            <%= f.submit "Confirm", :class=>"btn btn-primary btn-block"%>
+                        </div>
+                        <div class="col-md-6">
+                            <%= link_to 'Cancel', dashboard_path, :class=> "btn btn-danger btn-block" %>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <%= image_tag 'upload_image.png', :id => "output", :onclick => "upload_file(event)", class:'detail_car_size'%>
+                        <%= f.file_field :image, :onchange => "loadFile(event)", :id => "upload_image", :style => "display: none;" %>  
+
+                    </div>
+                </div>
+            </div>
+        <% end %>
+    </div>
+    <div class="col-md-1"></div>
+</div>

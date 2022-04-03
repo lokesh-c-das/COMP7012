@@ -1,0 +1,24 @@
+# == Schema Information
+#
+# Table name: conversations
+#
+#  id           :bigint           not null, primary key
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  recipient_id :integer
+#  sender_id    :integer
+#
+# Foreign Keys
+#
+#  fk_rails_...  (recipient_id => users.id) ON DELETE => cascade
+#  fk_rails_...  (sender_id => users.id) ON DELETE => cascade
+#
+
+one:
+  sender: one
+  recipient: two
+
+two: 
+  sender: one
+  recipient: three
+  

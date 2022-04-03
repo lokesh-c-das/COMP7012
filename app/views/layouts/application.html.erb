@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tiger-Car-App</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <%= link_to 'Tiger-Car-App', root_path, class:'navbar-brand font-weight-bold text-primary'  %>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <%= link_to 'About', about_path, :class=>"nav-link font-weight-bold text-info" %>
+          </li>
+        </ul>
+
+        <ul class="navbar-nav">
+          <% if !user_signed_in? %>
+            
+            <li class="nav-item">
+            <%= link_to 'Sign Up', new_user_registration_path, :class=>"nav-link font-weight-bold text-info" %>
+            </li>
+            <li class="nav-item">
+            <%= link_to 'Login', new_user_session_path, :class=>"nav-link font-weight-bold text-info" %>
+            </li>
+          <% end %>
+          <% if user_signed_in? %>
+            <%= render 'notifications/notification_dropdown' %>
+          <li class="nav-item">
+            <%= link_to dashboard_path, class:'nav-link' do %>
+              <i class="fa fa-dashboard fa-2x" style="color:blue !important"> </i>
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to image_tag(current_user.photo, class:'round-circle profile_picture'), profile_path, class:'nav-link' %>
+            
+          </li>
+          <%end%>
+          <li class="nav-item dropdown">
+            <% if user_signed_in? %>
+              <a class="btn btn-lg dropdown-toggle " href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= current_user.name %></a>
+              <div class="dropdown-menu dropdown-menu-right">
+                <%= link_to "Profile", profile_path, :class => "dropdown-item" %>
+                <%= link_to "Saved Car", favorite_car_path, :class => "dropdown-item" %>
+                <%= link_to "Sell Car", upload_car_path, :class => "dropdown-item" %>
+                <%= link_to "Send Message", send_message_path, :class => "dropdown-item" %>
+                <%= link_to "Report Authority", report_path, :class => "dropdown-item" %>
+                <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, :class=>"dropdown-item font-weight-bold text-danger" %>
+              </div>
+            <% end %>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <% if notice %>
+      <p class="alert alert-success"><%= notice %></p>
+    <% end %>
+    
+    <% if alert %>
+      <p class="alert alert-danger"><%= alert %></p>
+    <% end %>
+
+    <% flash.each do |type, msg| %>
+        <div class="alert alert-<%=type%>">
+          <%= msg %>
+        </div>
+    <% end %>
+    
+    <main class="container">
+      <%-# code for devise -%>
+      <%-#<p class="notice"><%= notice </p>%>
+      <p class="alert"><%= alert %></p>
+      <%= yield %>
+    </main>
+
+  </body>
+</html>

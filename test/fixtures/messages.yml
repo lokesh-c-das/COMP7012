@@ -1,0 +1,31 @@
+# == Schema Information
+#
+# Table name: messages
+#
+#  id              :bigint           not null, primary key
+#  body            :text
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  conversation_id :bigint
+#  user_id         :bigint
+#
+# Indexes
+#
+#  index_messages_on_conversation_id  (conversation_id)
+#  index_messages_on_user_id          (user_id)
+#
+
+one: 
+  body: Hello, I am one, talking to two
+  user: one
+  conversation: one
+
+two: 
+  body: Hi, I am two, talking to one
+  user: two
+  conversation: one
+
+three: 
+  body: Hello there, I am three, talking to two
+  user: three
+  conversation: two

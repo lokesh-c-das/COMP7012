@@ -1,0 +1,28 @@
+
+
+<li class="nav-item dropdown">
+  <a id="notify" onclick=mark_as_read() class="nav-link text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <i class="fa fa-envelope fa-2x" style="color:blue !important"> </i>
+    <% if current_user.notifications.count > 0 %>
+      <span id = "notification_count" class="badge"><%= current_user.notifications.count %></span>
+    <% end %>
+  </a>
+
+  <ul class="dropdown-menu  dropdown-menu-right">
+    <li class="head text-light bg-dark">
+      <div class="row">
+        <div class="col-lg-12 col-sm-12 col-12">
+          <span>Notifications</span>
+          <a href="" class="float-right text-light"> </a>
+        </div>
+    </li>
+
+      <li class="notification-box bg-gray">
+        <% for i in 0...current_user.notifications.count  %>
+          <%= render partial: 'notifications/notification',
+            locals: { notification: current_user.notifications.order('created_at DESC')[i] }
+          %>
+        <% end %>
+      </li>
+  </ul>
+</li>

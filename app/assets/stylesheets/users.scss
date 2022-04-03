@@ -1,0 +1,51 @@
+// Place all the styles related to the Users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+
+/**
+ * Profile image component
+ */
+ .profile-header-container{
+    margin: 0 auto;
+    text-align: center;
+}
+
+.profile-header-img {
+    padding: 54px;
+}
+
+.profile-header-img > img.img-circle {
+    width: 200px;
+    height: 200px;
+    border: 2px solid #51D2B7;
+    border-radius: 100%;
+}
+
+.profile-header {
+    margin-top: 43px;
+}
+
+
+/**
+ * Ranking component
+ */
+ .vertical_bar {
+    border-left: 2px solid #c4c0c0;
+    height: 250px;
+  }
+
+  /**
+  * Text Underline
+  */
+
+  .underline_profile_text {
+    border-bottom: 2px solid currentColor;
+  }
+
+  .profileMartingTop{
+      margin-top: 5%;
+  }
+  .btn_radius{
+      border-radius: 10px !important;
+  }

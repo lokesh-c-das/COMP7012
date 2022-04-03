@@ -1,0 +1,60 @@
+// Place all the styles related to the Dashboards controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.text-rating{
+    max-width: 9% !important;
+    flex: 0 0 9% !important;
+
+}
+
+
+/** Circle for sold and bought **/
+
+
+.circle-block {
+    border: 0px solid red;
+    text-align: center;
+    vertical-align: middle;
+}
+.circle-sold {
+    background: red;
+    border-radius: 200px;
+    color: white;
+    height: 100px;
+    font-weight: bold;
+    width: 100px;
+    display: table;
+    margin: 20px auto;
+    margin-left:100px;
+}
+.circle-sold p {
+    vertical-align: middle;
+    display: table-cell;
+}
+
+
+.circle-bought {
+    background:#723082;
+    border-radius: 200px;
+    color: white;
+    height: 100px;
+    font-weight: bold;
+    width: 100px;
+    display: table;
+    margin: 20px auto;
+    margin-left:100px;
+}
+.circle-bought p {
+    vertical-align: middle;
+    display: table-cell;
+}
+
+.circle-title{
+    margin-top:30px;
+    margin-left: 120px !important;
+    font-weight: bold;
+}
+
+.notification{
+    width: 500px !important;
+}

@@ -1,0 +1,16 @@
+<script>
+    $(document).ready(function(){
+    $("form_name").submit();
+    });
+
+</script>
+
+
+<%= form_with url: conversations_path, name: method: :post, :html => { :name => "form_name"} local: true, do |f| %>
+    <% f.hidden_field :sender_id %>
+    <% f.label_tag (:sender_id , sender_id) %>
+
+    <% f.hidden_field :recipient_id %>
+    <% f.label_tag (:recipient_id , recipient_id) %>
+
+<% end %>

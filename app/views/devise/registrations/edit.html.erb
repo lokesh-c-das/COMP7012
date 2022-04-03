@@ -1,0 +1,120 @@
+<div class="row">
+<div class="col-sm-1"></div>
+<div class="col-sm-10">
+  <div class="row">
+    
+    <div class="col-sm-12 d-flex justify-content-center">
+      <span class="h2 font-weight-bold text-info">Edit Profile </span>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3">
+      
+        <div class="profile-header-img">
+          <%= image_tag(current_user.photo, class:'img-circle', height: 50, width: 50) %>
+        </div>
+      
+    </div>
+
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      
+      <div class="row m-2 p-2">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-10 d-flex justify-content-center"><%= render "devise/shared/error_messages", resource: resource %></div>
+      </div>
+      
+    
+      <div class="row form-group">        
+        <div class="col-sm-4">
+          <%= f.label :change_photo, class:"d-flex flex-row-reverse font-weight-bold" %>
+        </div>
+        <div class="col-sm-8">
+          <%= f.file_field :photo %>
+        </div>
+      </div>
+      
+      
+      <div class="row form-group">
+        <div class="col-sm-4">
+          <%= f.label :name, class:"d-flex flex-row-reverse font-weight-bold" %>
+        </div>
+        <div class="col-sm-8">
+          <%= f.text_field :name, autofocus: true, class:"form-control" %>
+        </div>
+      </div>
+
+      
+      <div class="row form-group">
+        <div class="col-sm-4">
+          <%= f.label :phone_no, class:"d-flex flex-row-reverse font-weight-bold" %>
+        </div>
+        <div class="col-sm-8">
+          <%= f.text_field :phone_no, autofocus: true, class:"form-control" %>
+        </div>
+      </div>
+
+      
+      <div class="row form-group">
+        <div class="col-sm-4">
+          <%= f.label :email, class:"d-flex flex-row-reverse font-weight-bold" %>
+        </div>
+        <div class="col-sm-8">
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
+        </div>
+      </div>
+      
+      
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <% end %>
+
+      <div class="row form-group">
+        <div class="col-sm-4">
+          <%= f.label :password, class:"d-flex flex-row-reverse font-weight-bold" %>        
+        </div>
+        <div class="col-sm-8">
+          <% if @minimum_password_length %>
+            <span class="text-danger"><em>(<%= @minimum_password_length %> characters minimum)</em></span>
+          <% end %>
+          <%= f.password_field :password, autocomplete: "new-password", class:"form-control" %>
+          <i>(leave blank if you don't want to change it)</i>
+        </div>
+      </div>
+
+      
+      <div class="row form-group">
+        <div class="col-sm-4">
+          <%= f.label :password_confirmation, class:"d-flex flex-row-reverse font-weight-bold" %>
+        </div>
+        <div class="col-sm-8">
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control" %>
+        </div>
+      </div>
+
+          
+      <div class="row form-group">
+        <div class="col-sm-4">
+          <%= f.label :current_password, class:"d-flex flex-row-reverse font-weight-bold" %>
+        </div>
+        <div class="col-sm-8">
+          <span class="text-danger"><i>(we need your current password to confirm your changes)</i></span>
+          <%= f.password_field :current_password, autocomplete: "current-password", class:"form-control" %>
+        </div>
+      </div>
+
+    
+      <div class="row form-group">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-8">
+          <div class="row">
+            <div class="col-sm-6"><%= f.submit "Update", :class=> "btn btn-success btn-block" %></div>
+            <div class="col-sm-6"><%= link_to "Back", profile_path, :class=> "btn btn-info btn-block" %></div>
+          </div>
+        </div>
+      </div>
+
+      
+    <% end %>
+  </div>
+
+</div>

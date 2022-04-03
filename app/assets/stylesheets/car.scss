@@ -1,0 +1,52 @@
+// Place all the styles related to the Car controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+
+* {
+    box-sizing: border-box;
+  }
+  .btn-container {
+    width: 340px;
+    border: 1px solid rgba(0,0,0,0.1);
+    padding: 5px;
+  }
+  
+  .btn-decision {
+    margin: 0 5px 0 0;
+    padding: 4px 8px;
+    background: #5d4ca5;
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+    width:157px;
+    display: inline;
+  }
+
+.header {
+  margin-bottom: 15px;
+}
+.title {
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.alert-error {
+    color:red !important;
+    }
+
+.btn-car{
+      border: 1px solid black !important;
+      border-radius: 5px !important;
+      font-weight:bold;
+  }
+.car_size{
+  height: 150px;
+  width: 150px;
+}
+
+.detail_car_size{
+  height: 200px;
+  width: 200px;
+}

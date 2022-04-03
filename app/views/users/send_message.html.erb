@@ -1,0 +1,41 @@
+<%= form_with url: send_message_path, local: true, method: :get do %>
+    <div class="form-group">
+        <div class="form-group">
+            <label for="message_to">Message to</label>
+            <%
+                i = 0
+                user_array = Array.new()
+                @users.each do |user|
+                        user_array.insert(i, user.email)
+                        i=i+1
+                end
+            %>
+            <%= select_tag "message_to", 
+            options_for_select(user_array), prompt: '---Send to---' , class:"form-control"%>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="message">Message</label>
+        <textarea class="form-control" id="message_body" rows="3" placeholder="Type your message here..."></textarea>
+    </div>
+    <div class="col text-center">
+        <button class="btn btn-primary" data-target="#new">Send</button>
+         <li><button type="button" class="list-group-item"
+    data-toggle="collapse" data-target="#new"><h4>New Message
+      <i class="glyphicon glyphicon-new-window" style="vertical-align:right;"></i></h4></button></li>
+    </div>
+    
+    <div id="new" class="collapse">
+    <div class="panel-body">
+     <h1 class="panel-heading">All Users:</h1>
+       <% @users.each do |user| %>
+            <div class="item">
+                <h3>
+                    <%= link_to user.email,
+                    conversations_path(sender_id: current_user.id, recipient_id: user.id), method: "post"%>
+                </h3>
+            </div>
+     <% end %>
+    </div>
+  </div>
+<% end %>

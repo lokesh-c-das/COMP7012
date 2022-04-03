@@ -1,0 +1,63 @@
+<div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10">
+      <div class="row">
+        <div class="col-sm-4 d-flex flex-row-reverse">
+          <span class="text-primary font-weight-bold h2">User Profile</span>
+        </div>
+        <div class="col-sm-8"></div>
+      </div>
+      <div class="row">
+        <div class="col-sm-5">
+          <div class="profile-header-container">   
+    		      <div class="profile-header-img">
+                <%= image_tag(current_user.photo, class:'img-circle') %>
+            </div>
+          </div> 
+        </div>
+
+        <div class="col-sm-1 vertical_bar"></div>
+
+        <div class="col-sm-6">
+          <div class="row profileMartingTop">
+            <div class="col-sm-3 d-flex flex-row-reverse"><span class="font-weight-bold">Name:</span></div>
+            <div class="col-sm-9 underline_profile_text"><%= current_user.name %></div>
+          </div>
+          <div class="row profileMartingTop">
+            <div class="col-sm-3 font-weight-bold float-right d-flex flex-row-reverse">Email:</div>
+            <div class="col-sm-9 underline_profile_text"><%= current_user.email %></div>
+          </div>
+          
+          <div class="row profileMartingTop">
+            <div class="col-sm-3 font-weight-bold float-right d-flex flex-row-reverse">Phone No:</div>
+            <div class="col-sm-9 underline_profile_text"><%= current_user.phone_no %></div>
+          </div>
+
+          <div class="row profileMartingTop">
+            <div class="col-sm-3 font-weight-bold float-right d-flex flex-row-reverse">UID:</div>
+            <div class="col-sm-9 underline_profile_text"><%= current_user.uid %></div>
+          </div>
+          <div class="row profileMartingTop">
+            <div class="col-sm-3 font-weight-bold float-sm-right d-flex flex-row-reverse">Rating:</div>
+            <div class="col-sm-9">
+              <% (1..user_rating).each do |i|%>
+                <i class="fa fa-star" style="color:red"></i>
+              <% end %>
+              <% (user_rating+1..5).each do |i|%>
+                <i class="fa fa-star-o" style="color:red"></i>
+              <% end %>
+            
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4 d-flex flex-row-reverse"></div>
+        <div class="col-sm-4 d-flex flex-row-reverse">
+          <%= link_to 'Update Profile', edit_user_registration_path, class:'btn btn-success btn_radius' %>
+        </div>
+        <div class="col-sm-4 d-flex flex-row-reverse"><%= link_to "Delete Account", registration_path(current_user), data: { confirm: "Are you sure?" }, method: :delete, class:'btn btn-danger btn_radius' %></div>
+      </div>
+    </div>
+    <div class="col-sm-1"></div>
+</div>
